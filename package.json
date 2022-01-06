@@ -1,0 +1,19 @@
+{
+  "name": "paas-datastore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UP940148/up940148-PaaS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UP940148/up940148-PaaS/issues"
+  },
+  "homepage": "https://github.com/UP940148/up940148-PaaS#readme"
+}
