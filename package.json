@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/UP940148/up940148-PaaS/issues"
   },
-  "homepage": "https://github.com/UP940148/up940148-PaaS#readme"
+  "homepage": "https://github.com/UP940148/up940148-PaaS#readme",
+  "dependencies": {
+    "@google-cloud/datastore": "^6.6.2",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
 }
