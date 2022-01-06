@@ -1,6 +1,6 @@
 // Require GCloud Datastore
-const {Datastore} = require('@google-cloud/datastore');
-const ds = new Datastore({ namespace: 'paas-signoff'});
+const { Datastore } = require('@google-cloud/datastore');
+const ds = new Datastore({ namespace: 'paas-signoff' });
 
 const kind = 'register';
 
@@ -12,9 +12,9 @@ async function setEntity(reg, val) {
   const entity = {
     key: key(reg),
     data: { name: reg, val },
-  }
+  };
   await ds.save(entity);
-};
+}
 
 module.exports.get = async (reg) => {
   // Get the register
@@ -31,7 +31,7 @@ module.exports.get = async (reg) => {
     [data] = await ds.get(key(reg));
   }
   return data.val;
-}
+};
 
 module.exports.put = async (reg, val) => {
   try {
@@ -39,7 +39,7 @@ module.exports.put = async (reg, val) => {
   } catch (e) {
     return e;
   }
-}
+};
 
 module.exports.post = async (reg, val) => {
   // Get current value
@@ -64,7 +64,7 @@ module.exports.post = async (reg, val) => {
   }
   // Return register value
   return val;
-}
+};
 
 module.exports.delete = async (reg) => {
   // Delete register
@@ -73,4 +73,4 @@ module.exports.delete = async (reg) => {
   } catch (e) {
     return e;
   }
-}
+};

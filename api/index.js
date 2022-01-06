@@ -31,7 +31,7 @@ api.delete('/:reg(\\w+)', async (req, res) => {
     console.error(e);
     res.sendStatus(500);
   }
-})
+});
 
 api.use(bodyParser.text());
 
@@ -51,7 +51,7 @@ api.put('/:reg(\\w+)', async (req, res) => {
     console.error(e);
     res.sendStatus(500);
   }
-})
+});
 
 // Add to register value
 api.post('/:reg(\\w+)', async (req, res) => {
@@ -68,4 +68,4 @@ api.post('/:reg(\\w+)', async (req, res) => {
     console.error(e);
     res.sendStatus(500);
   }
-})
+});

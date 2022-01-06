@@ -20,5 +20,16 @@
     "@google-cloud/datastore": "^6.6.2",
     "body-parser": "^1.19.1",
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-portsoc": "^0.8.1"
+  },
+  "eslintConfig": {
+    "extends": "portsoc",
+    "root": true,
+    "env": {
+      "browser": true
+    }
   }
 }
