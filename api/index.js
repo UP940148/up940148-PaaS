@@ -12,7 +12,9 @@ const db = require('./db-datastore');
 // Get register value
 api.get('/:reg(\\w+)', async (req, res) => {
   try {
-    res.send(await db.get(req.params.reg));
+    // Set header to text/plain, otherwise text/HTML is assumed by default
+    res.setHeader('content-type', 'text/plain');
+    res.send(`${await db.get(req.params.reg)}`);
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
