@@ -19,7 +19,6 @@ async function setEntity(reg, val) {
 module.exports.get = async (reg) => {
   // Get the register
   let [data] = await ds.get(key(reg));
-  console.log(data);
   if (data === undefined) {
     // If register doesn't exist:
     // Create register
@@ -30,7 +29,6 @@ module.exports.get = async (reg) => {
     }
     // Return value
     [data] = await ds.get(key(reg));
-    console.log(data);
   }
-  return data;
+  return data.val;
 }
