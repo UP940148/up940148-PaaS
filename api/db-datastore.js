@@ -23,7 +23,7 @@ module.exports.get = async (reg) => {
     // If register doesn't exist:
     // Create register
     try {
-      setEntity(reg, 0);
+      await setEntity(reg, 0);
     } catch (e) {
       return e;
     }
