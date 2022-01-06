@@ -34,7 +34,11 @@ module.exports.get = async (reg) => {
 }
 
 module.exports.put = async (reg, val) => {
-  await setEntity(reg, val);
+  try {
+    await setEntity(reg, val);
+  } catch (e) {
+    return e;
+  }
 }
 
 module.exports.post = async (reg, val) => {

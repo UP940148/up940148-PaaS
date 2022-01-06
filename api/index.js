@@ -28,20 +28,44 @@ api.delete('/:reg(\\w+)', async (req, res) => {
     await db.delete(req.params.reg);
     res.sendStatus(204);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.sendStatus(500);
   }
 })
 
-app.use(bodyParser);
+api.use(bodyParser.text());
 
 // Set register value
 api.put('/:reg(\\w+)', async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.body);
+  // If body isn't a number, send 400
+  if (isNaN(req.body)) {
+    res.sendStatus(400);
+  }
+
+  try {
+    res.setHeader('content-type', 'text/plain');
+    // Set register value and return value
+    await db.put(req.params.reg, req.body);
+    res.send(req.body);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
+  }
 })
 
 // Add to register value
 api.post('/:reg(\\w+)', async (req, res) => {
-  return;
+  // If body isn't a number, send 400
+  if (isNaN(req.body)) {
+    res.sendStatus(400);
+  }
+
+  try {
+    res.setHeader('content-type', 'text/plain');
+    // Update register value and return new total
+    res.send(`${await db.post(req.params.reg, req.body)}`);
+  } catch (e) {
+    console.error(e);
+    res.sendStatus(500);
+  }
 })
