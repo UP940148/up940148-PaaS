@@ -19,8 +19,8 @@ async function setEntity(reg, val) {
 module.exports.get = async (reg) => {
   // Get the register
   let [data] = await ds.get(key(reg));
+  // If register doesn't exist:
   if (data === undefined) {
-    // If register doesn't exist:
     // Create register
     try {
       await setEntity(reg, 0);
@@ -31,4 +31,42 @@ module.exports.get = async (reg) => {
     [data] = await ds.get(key(reg));
   }
   return data.val;
+}
+
+module.exports.put = async (reg, val) => {
+  await setEntity(reg, val);
+}
+
+module.exports.post = async (reg, val) => {
+  // Get current value
+  const [data] = await ds.get(key(reg));
+  // If register doesn't exist:
+  if (data === undefined) {
+    // Create register with value
+    try {
+      await setEntity(reg, val);
+    } catch (e) {
+      return e;
+    }
+  } else {
+    // Add value to stored value
+    val += data.val;
+    // Update register
+    try {
+      await setEntity(reg, val);
+    } catch (e) {
+      return e;
+    }
+  }
+  // Return register value
+  return val;
+}
+
+module.exports.delete = async (reg) => {
+  // Delete register
+  try {
+    await ds.delete(key(reg));
+  } catch (e) {
+    return e;
+  }
 }

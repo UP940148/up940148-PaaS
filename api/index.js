@@ -20,3 +20,28 @@ api.get('/:reg(\\w+)', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+// Delete register
+api.delete('/:reg(\\w+)', async (req, res) => {
+  try {
+    // Delete register, if successful return 204
+    await db.delete(req.params.reg);
+    res.sendStatus(204);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+})
+
+app.use(bodyParser);
+
+// Set register value
+api.put('/:reg(\\w+)', async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+})
+
+// Add to register value
+api.post('/:reg(\\w+)', async (req, res) => {
+  return;
+})
