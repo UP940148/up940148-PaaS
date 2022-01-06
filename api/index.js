@@ -45,7 +45,7 @@ api.put('/:reg(\\w+)', async (req, res) => {
   try {
     res.setHeader('content-type', 'text/plain');
     // Set register value and return value
-    await db.put(req.params.reg, req.body);
+    await db.put(req.params.reg, Number(req.body));
     res.send(req.body);
   } catch (e) {
     console.error(e);
@@ -63,7 +63,7 @@ api.post('/:reg(\\w+)', async (req, res) => {
   try {
     res.setHeader('content-type', 'text/plain');
     // Update register value and return new total
-    res.send(`${await db.post(req.params.reg, req.body)}`);
+    res.send(`${await db.post(req.params.reg, Number(req.body))}`);
   } catch (e) {
     console.error(e);
     res.sendStatus(500);
