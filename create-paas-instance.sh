@@ -5,4 +5,4 @@ gcloud compute instances create \
 --tags http-server,https-server \
 paas-instance
 
-gcloud compute ssh paas-instance
+# gcloud compute ssh paas-instance
